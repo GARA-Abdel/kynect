@@ -1,0 +1,1 @@
+import { signIn } from "./auth.js";import { $, showToast } from "./ui.js";import "./main.js";$("#login").onsubmit=async e=>{e.preventDefault();try{await signIn($("#email").value,$("#password").value);location.href="admin.html"}catch(err){$("#message").innerHTML=`<div class=notice-error>${err.message}</div>`;showToast("Connexion impossible","error")}};
