@@ -1,2 +1,2 @@
-export const SUPABASE_URL = "REMPLACER_PAR_URL";
-export const SUPABASE_ANON_KEY = "REMPLACER_PAR_ANON_KEY";
+export const SUPABASE_URL = "https://uzztfxrqeejcgorlsgxf.supabase.co";
+export const SUPABASE_ANON_KEY = "sb_publishable_l-2L_MQntZLtomnV3nvICw_k3jzkrVV";
