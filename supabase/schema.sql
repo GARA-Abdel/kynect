@@ -4,10 +4,11 @@ create table public.offres (id uuid primary key default gen_random_uuid(), titre
 create table public.ressources (id uuid primary key default gen_random_uuid(), titre text not null, description text, url text not null, type text not null check (type in ('cv','formation_certifiante')), prix text check (prix in ('gratuit','payant')), created_at timestamptz default now());
 insert into public.categories (nom,slug,icone,description) values ('Bourses d’études','bourses','🎓','Financer ses études'),('Formations','formations','🏫','Développer ses compétences'),('Concours','concours','🏆','Se challenger et révéler ses talents'),('Emplois','emplois','💼','Construire son expérience professionnelle'),('Stages','stages','🔬','Apprendre sur le terrain'),('Programmes et opportunités','programmes','🌍','Élargir ses horizons');
 alter table public.categories enable row level security; alter table public.offres enable row level security; alter table public.ressources enable row level security;
+grant insert on public.offres to anon, authenticated;
 create policy "categories_select_public" on public.categories for select using (true);
 create policy "categories_manage_admin" on public.categories for all to authenticated using ((auth.jwt() ->> 'email') = 'admin@kynect.app') with check ((auth.jwt() ->> 'email') = 'admin@kynect.app');
 create policy "offres_select_approved_public" on public.offres for select using (statut = 'approved' or (auth.jwt() ->> 'email') = 'admin@kynect.app');
-create policy "offres_insert_pending_public" on public.offres for insert to anon,authenticated with check (statut = 'pending');
+create policy "offres_insert_pending_public" on public.offres for insert to public with check (statut = 'pending');
 create policy "offres_update_admin" on public.offres for update to authenticated using ((auth.jwt() ->> 'email') = 'admin@kynect.app') with check ((auth.jwt() ->> 'email') = 'admin@kynect.app');
 create policy "offres_delete_admin" on public.offres for delete to authenticated using ((auth.jwt() ->> 'email') = 'admin@kynect.app');
 create policy "ressources_select_public" on public.ressources for select using (true);
