@@ -49,3 +49,7 @@ Aucune clé `service_role` n’a été utilisée ou exposée. Aucun schéma, auc
 ## État final
 
 Les trois pages front-end demandées, la présentation détaillée de l’accueil et les boutons retour sont implémentés et présents sur le site Netlify public. Le dépôt GitHub est à jour avec le commit `1f67470`. La lecture publique Supabase fonctionne ; le seul point bloquant restant est l’insertion publique d’une offre, qui dépend du diagnostic RLS précédemment signalé.
+
+## Ressources initiales ajoutées
+
+Les ressources initiales fournies ont été insérées dans Supabase sans modifier le schéma : **10 ressources CV** et **14 formations certifiantes**. Les pages publiques peuvent maintenant les charger directement ; les formations disposent des valeurs `gratuit` ou `payant` utilisées par le badge et le filtre client.
