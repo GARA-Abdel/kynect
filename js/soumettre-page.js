@@ -1,4 +1,4 @@
-import { fetchCategories, renderSpecificFields, submitOffer } from "./offres.js";
+import { fetchCategories, renderSpecificFields, submitOffer } from "./offres.js?v=20260920-1";
 import { $, showToast, setLoading } from "./ui.js";
 import "./main.js";
 
